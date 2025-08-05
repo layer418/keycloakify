@@ -1,0 +1,51 @@
+/* regular */
+@font-face {
+  font-family: "SourceSans3-Regular";
+  src: url("/fonts/SourceSans3-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* medium */
+@font-face {
+  font-family: "SourceSans3-Medium";
+  src: url("/fonts/SourceSans3-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* semibold */
+@font-face {
+  font-family: "SourceSans3-SemiBold";
+  src: url("/fonts/SourceSans3-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {}
+
+.kcHtmlClass {
+  background: url(https://itmr-dev.de/bg2.jpg)
+  no-repeat center fixed;
+  background-size: cover;
+  font-family: "SourceSans3-Regular", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kcBodyClass {
+
+}
+
+.kcLoginClass {
+  background: white;
+}
+
+.kcHeaderClass {
+  display: none;
+}

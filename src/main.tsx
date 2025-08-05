@@ -4,16 +4,22 @@ import { KcPage } from "./kc.gen";
 
 // The following block can be uncommented to test a specific page with `yarn dev`
 // Don't forget to comment back or your bundle size will increase
-/*
 import { getKcContextMock } from "./login/KcPageStory";
 
 if (import.meta.env.DEV) {
     window.kcContext = getKcContextMock({
         pageId: "register.ftl",
-        overrides: {}
+        overrides: {
+            locale: {
+                currentLanguageTag: "de",
+                supported: [
+                    { label: "Deutsch", languageTag: "de" },
+                    { label: "English", languageTag: "en" }
+                ]
+            }
+        }
     });
 }
-*/
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>

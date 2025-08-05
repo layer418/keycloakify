@@ -1,0 +1,216 @@
+/* medium */
+@font-face {
+  font-family: "Gilroy-Medium";
+  src: url("/fonts/TTF/AnyConv.com__Gilroy-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* semibold */
+@font-face {
+  font-family: "Gilroy-SemiBold";
+  src: url("/fonts/TTF/AnyConv.com__Gilroy-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  /* set default colors */
+  --stromee-green-100: #6ddc91;
+  --stromee-green-200: #84e1a2;
+  --stromee-green-300: #98e6b2;
+  --stromee-green-400: #adebc1;
+
+  --stromee-navy-100: #1d2445;
+  --stromee-navy-200: #1d2849;
+  --stromee-navy-300: #24325b;
+  --stromee-navy-400: #2c3c6d;
+
+  --base-grey-300: #a3a6a6;
+  --base-grey-600: #f8f8f8;
+
+  --background-color-primary: var(--base-grey-600);
+  --background-color-primary-dark: var(--stromee-navy-100);
+  --background-color-secondray: #ffffff;
+  --background-container-color: #1b4650;
+
+  --action-active-color: var(--stromee-green-100);
+  --action-disabled-color: var(--base-grey-600);
+  --action-inactive-color: var(--base-grey-300);
+
+  --success-color: #6ddc91;
+  --info-color: #0ff;
+  --warning-color: #f0e7da;
+  --error-color: #b33349;
+
+  /* change colors */
+  /* background */
+  --pf-global--BackgroundColor--100: var(--background-color-primary);
+  --pf-global--BackgroundColor--150: #0ff;
+  --pf-global--BackgroundColor--200: #0ff;
+  /* input Field */
+  --pf-global--BackgroundColor--light-100: var(--background-color-secondray);
+  --pf-global--BackgroundColor--light-200: #0ff;
+  --pf-global--BackgroundColor--light-300: #0ff;
+  /* dropdown:hover */
+  --pf-global--BackgroundColor--light-300: var(--background-color-secondray);
+  --pf-global--BackgroundColor--dark-100: var(--stromee-navy-100);
+  --pf-global--BackgroundColor--dark-200: var(--stromee-navy-200);
+  --pf-global--BackgroundColor--dark-300: var(--stromee-navy-300);
+  --pf-global--BackgroundColor--dark-400: var(--stromee-navy-400);
+  --pf-global--BackgroundColor--dark-transparent-100: rgba(3, 3, 3, 0.62);
+  --pf-global--BackgroundColor--dark-transparent-200: rgba(3, 3, 3, 0.32);
+  /* ------------------------------------------------------------------------------------------------------------------------------- */
+  /* Text color */
+  /* Header */
+  --pf-global--Color--100: var(--stromee-navy-100);
+  /* language */
+  --pf-global--Color--200: var(--stromee-navy-200);
+  --pf-global--Color--300: var(--stromee-navy-300);
+  --pf-global--Color--400: var(--stromee-navy-400);
+  /* on-primary */
+  --pf-global--Color--light-100: var(--stromee-navy-100);
+  --pf-global--Color--light-200: var(--stromee-navy-200);
+  --pf-global--Color--light-300: var(--stromee-navy-300);
+  --pf-global--Color--dark-100: var(--stromee-navy-100);
+  /* icon */
+  --pf-global--Color--dark-200: var(--stromee-navy-200);
+  /* ------------------------------------------------------------------------------------------------------------------------------- */
+  /* active */
+  --pf-global--active-color--100: var(--stromee-green-100);
+  --pf-global--active-color--200: var(--stromee-green-200);
+  --pf-global--active-color--300: var(--stromee-green-300);
+  --pf-global--active-color--400: var(--stromee-green-400);
+  /* ------------------------------------------------------------------------------------------------------------------------------- */
+  /* disabled */
+  --pf-global--disabled-color--100: rgb(163, 166, 166);
+  --pf-global--disabled-color--200: var(--action-disabled-color);
+  --pf-global--disabled-color--300: #0ff;
+  /* ------------------------------------------------------------------------------------------------------------------------------- */
+  /* primary */
+  --pf-global--primary-color--100: var(--stromee-green-100);
+  --pf-global--primary-color--light-100: var(--stromee-green-100);
+  --pf-global--primary-color--dark-100: var(--stromee-navy-100);
+  /* ------------------------------------------------------------------------------------------------------------------------------- */
+  /* secondary */
+  --pf-global--secondary-color--100: #0ff;
+  /* ------------------------------------------------------------------------------------------------------------------------------- */
+  /* default */
+  --pf-global--default-color--100: #0ff;
+  --pf-global--default-color--300: #0ff;
+  /* ------------------------------------------------------------------------------------------------------------------------------- */
+  /* success */
+  --pf-global--success-color--100: var(--stromee-green-100);
+  /* ------------------------------------------------------------------------------------------------------------------------------- */
+  /* info */
+  --pf-global--info-color--100: #0ff;
+  /* ------------------------------------------------------------------------------------------------------------------------------- */
+  /* warning */
+  --pf-global--warning-color--100: rgb(240, 231, 218);
+  /* ------------------------------------------------------------------------------------------------------------------------------- */
+  /* danger */
+  --pf-global--danger-color--100: var(--error-color);
+  --pf-global--danger-color--200: var(--error-color);
+  --pf-global--danger-color--300: #0ff;
+
+  /* change fontSizes */
+  --pf-global--FontSize--4xl: 2.25rem;
+  --pf-global--FontSize--3xl: 1.75rem;
+  --pf-global--FontSize--2xl: 1.5rem;
+  --pf-global--FontSize--xl: 1.25rem;
+  --pf-global--FontSize--lg: 1.125rem;
+  --pf-global--FontSize--md: 1rem;
+  --pf-global--FontSize--sm: 0.875rem;
+  --pf-global--FontSize--xs: 0.75rem;
+  --pf-global--FontWeight--light: 300;
+  --pf-global--FontWeight--normal: 400;
+  --pf-global--FontWeight--semi-bold: 700;
+  --pf-global--FontWeight--overpass--semi-bold: 500;
+  --pf-global--FontWeight--bold: 700;
+  --pf-global--FontWeight--overpass--bold: 600;
+}
+
+body {
+  font-family: "Gilroy-Medium", sans-serif;
+}
+
+/* Hover of Google Login Button color fix*/
+.login-pf a:hover {
+  color: inherit;
+}
+
+.kcHtmlClass body {
+  background: url(https://itmr-dev.de/bg2.jpg)
+    no-repeat center fixed;
+  background-size: cover;
+}
+
+.kcHeaderWrapperClass {
+  color: var(--pf-global--Color--100);
+}
+
+.kcFormCardClass {
+  background-color: var(--pf-global--BackgroundColor--100);
+  border: none;
+  border-radius: 4px;
+  color: var(--stromee-navy-100);
+}
+
+.kcInputClass {
+  border-radius: 1000px;
+  border: none;
+  height: 2rem;
+}
+
+.kcInputGroup {
+  background: none;
+  position: relative;
+}
+
+.kcFormPasswordVisibilityButtonClass {
+  background-color: var(--background-color-secondray);
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  border-radius: 1000px;
+  height: 100%;
+  aspect-ratio: 1;
+}
+
+.kcFormPasswordVisibilityButtonClass:hover {
+  box-shadow: 0px 2px 6px 0px rgba(29, 36, 69, 0.25);
+}
+
+.kcButtonClass {
+  border-radius: 1000px;
+  box-shadow: 0px 0px 5px 0px rgba(29, 36, 69, 0.1);
+  height: 2rem;
+}
+
+.kcButtonClass:hover {
+  box-shadow: 0px 2px 6px 0px rgba(29, 36, 69, 0.25);
+  background-color: var(--pf-global--primary-color--100);
+}
+
+.kcFormSocialAccountListButtonClass {
+  background-color: #ffffff !important;
+  color: var(--stromee-navy-100);
+  border-radius: 1000px;
+  border: 1px solid var(--stromee-navy-100) !important;
+  text-align: center;
+  height: 2rem;
+  line-height: 1.3rem;
+}
+
+.kcCommonLogoIdP {
+  line-height: 1.2rem;
+}
+
+.kcFormSocialAccountListButtonClass:hover {
+  color: var(--stromee-navy-100);
+  box-shadow: 0px 2px 6px 0px rgba(29, 36, 69, 0.25);
+}
+
+.kcFormSocialAccountListButtonClass::after {
+  all: unset;
+}
