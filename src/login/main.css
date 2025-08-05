@@ -9,6 +9,11 @@
 :root {
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   font-family: SourceSans3, sans-serif;
 }
@@ -17,13 +22,12 @@ body {
   background: url(https://itmr-dev.de/bg2.jpg)
   no-repeat center fixed;
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .kcBodyClass {
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .kcLoginClass {
