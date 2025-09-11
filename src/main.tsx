@@ -10,11 +10,21 @@ if (import.meta.env.DEV) {
     window.kcContext = getKcContextMock({
         pageId: "login.ftl",
         overrides: {
+            registrationDisabled: true,
+            realm: {
+                registrationAllowed: false,
+                resetPasswordAllowed: false,
+                registrationEmailAsUsername: true,
+            },
+            auth: {
+                showUsername: false,
+                showResetCredentials: false,
+            },
             locale: {
                 currentLanguageTag: "de",
                 supported: [
                     { label: "Deutsch", languageTag: "de" },
-                    { label: "English", languageTag: "en" }
+                    // { label: "English", languageTag: "en" }
                 ]
             }
         }

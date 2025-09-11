@@ -9,7 +9,7 @@
 :root {
 }
 
-html, body {
+html, body, #storybook-root {
   height: 100%;
   width: 100%;
 }
@@ -19,12 +19,16 @@ body {
 }
 
 .kcHtmlClass {
+  /*
   background: url(https://itmr-dev.de/bg2.jpg)
+  no-repeat center fixed;
+  */
+  background: url(./assets/background.jpg)
   no-repeat center fixed;
   background-size: cover;
 }
 
-.kcBodyClass {
+.kcBodyClass, #storybook-root {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,8 +36,100 @@ body {
 
 .kcLoginClass {
   background: white;
+  padding: 2rem;
+  border-radius: 4px;
+  box-shadow: 0px 2px 6px 0px rgba(29, 36, 69, 0.1);
 }
 
 .kcHeaderClass {
   display: none;
+}
+
+.kcLocaleMainClass {
+  display: none;
+}
+
+.kcFormGroupClass {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.kcLabelClass {
+}
+
+.kcInputGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.kcInputClass {
+  border: none;
+  height: 2rem;
+  padding: 0.5rem;
+  border: 1px solid gray;
+  position: relative;
+  width: 100%;
+}
+
+.kcFormPasswordVisibilityButtonClass {
+  border: 1px solid gray;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  aspect-ratio: 1;
+}
+
+.kcFormPasswordVisibilityButtonClass>i {
+  font-family: FontAwesome;
+  /*
+  font: normal normal normal 14px/1 FontAwesome;
+  */
+}
+.kcFormPasswordVisibilityButtonClass>i::before {
+  font-family: FontAwesome;
+}
+/*
+box-sizing: border-box;
+}
+.fa-eye::before {
+  content: "\f06e";
+}
+* .fa-eye::before {
+  content: "\f06e";
+}
+Element {
+}
+.kcFormPasswordVisibilityButtonClass > i {
+  font-family: FontAwesome;
+  font: normal normal normal 14px/1 FontAwesome;
+}
+*/
+
+.kcButtonClass {
+  box-shadow: 0px 0px 5px 0px rgba(29, 36, 69, 0.1);
+  border: none;
+  cursor: pointer;
+}
+
+.kcButtonPrimaryClass {
+  background: #1869b4;
+  color: white;
+}
+
+.kcButtonPrimaryClass:hover {
+  background: #0f4a7d;
+  box-shadow: 0px 2px 6px 0px rgba(29, 36, 69, 0.25);
+}
+
+.kcButtonBlockClass {
+  display: block;
+  width: 100%;
+}
+
+.kcButtonLargeClass {
+  padding: 1rem 2rem;
 }
