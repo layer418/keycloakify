@@ -219,7 +219,14 @@ const DeckGLBackground: React.FC<DeckGLBackgroundProps> = ({ className }) => {
                 zIndex: -1,
                 pointerEvents: "none"
             }}
-        />
+        >
+            <style>{`
+                .mapboxgl-ctrl-logo,
+                .mapboxgl-ctrl-attrib {
+                    display: none !important;
+                }
+            `}</style>
+        </div>
     );
 };
 
