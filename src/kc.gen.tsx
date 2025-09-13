@@ -9,9 +9,9 @@
 
 import { lazy, Suspense, type ReactNode } from "react";
 
-export type ThemeName = "layer418-berlin";
+export type ThemeName = "layer418-cities";
 
-export const themeNames: ThemeName[] = ["layer418-berlin"];
+export const themeNames: ThemeName[] = ["layer418-cities"];
 
 export type KcEnvName = never;
 
