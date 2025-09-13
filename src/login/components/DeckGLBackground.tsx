@@ -30,6 +30,7 @@ const DeckGLBackground: React.FC<DeckGLBackgroundProps> = ({ className }) => {
         // { name: 'Berlin', coordinates: [13.375390, 52.518763], zoom: 16.70, bearing: 55.20, pitch: 72.50 },
         //{ name: 'Stuttgart', coordinates: [9.179229, 48.77734], zoom: 17.36, bearing: 152.00, pitch: 75.50 },
         //{ name: 'New York City', coordinates: [-73.971274, 40.762698], zoom: 15.60, bearing: 95.94, pitch: 81.38 },
+        //test
         {
             name: "Schorndorf",
             coordinates: [9.54339579543857, 48.80613545138229], // Moved more to the right (east)
