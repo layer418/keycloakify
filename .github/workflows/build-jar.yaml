@@ -1,0 +1,71 @@
+name: Build JAR in Container
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    permissions:
+      contents: write
+      packages: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build Docker image
+        run: docker build -t temp-image:latest .
+
+      - name: Create dist_keycloak directory
+        run: mkdir -p ./dist_keycloak
+
+      - name: Copy JAR file from Docker image
+        run: docker run --rm -v ${{ github.workspace }}/dist_keycloak:/dist temp-image:latest cp ./dist_keycloak/keycloak-theme-for-kc-22-and-above.jar /dist/keycloak-theme-for-kc-22-and-above.jar
+
+      - name: List files in dist_keycloak
+        run: ls -l ./dist_keycloak
+
+      - name: Upload dist_keycloak artifacts to release
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist_keycloak-artifacts
+          path: ./dist_keycloak/keycloak-theme-for-kc-22-and-above.jar
+          if-no-files-found: warn
+
+      - name: Set Release Tag
+        id: set_tag
+        run: echo "RELEASE_TAG=release-$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          release_name: Release ${{ env.RELEASE_TAG }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist_keycloak/keycloak-theme-for-kc-22-and-above.jar
+          asset_name: keycloak-theme-for-kc-22-and-above.jar
+          asset_content_type: application/java-archive
+
+      - name: Add git note
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Action"
+          git fetch origin "refs/notes/*:refs/notes/*"
+          git notes add -m "published" ${{ github.sha }}
+          git push origin refs/notes/commits
