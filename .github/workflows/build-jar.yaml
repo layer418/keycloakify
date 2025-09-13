@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dist_keycloak-artifacts
-          path: ./dist_keycloak/keycloak-theme-for-kc-22-and-above.jar
+          path: ./dist_keycloak/keycloak-theme-for-kc-22-to-25.jar
           if-no-files-found: warn
 
       - name: Set Release Tag
@@ -58,8 +58,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dist_keycloak/keycloak-theme-for-kc-22-and-above.jar
-          asset_name: keycloak-theme-for-kc-22-and-above.jar
+          asset_path: ./dist_keycloak/keycloak-theme-for-kc-22-to-25.jar
+          asset_name: keycloak-theme-for-kc-22-to-25.jar
           asset_content_type: application/java-archive
 
       - name: Add git note
