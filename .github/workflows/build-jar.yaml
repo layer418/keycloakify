@@ -25,7 +25,7 @@ jobs:
         run: mkdir -p ./dist_keycloak
 
       - name: Copy JAR file from Docker image
-        run: docker run --rm -v ${{ github.workspace }}/dist_keycloak:/dist temp-image:latest cp ./dist_keycloak/keycloak-theme-for-kc-all-other-versions /dist/keycloak-theme-for-kc-all-other-versions.jar
+        run: docker run --rm -v ${{ github.workspace }}/dist_keycloak:/dist temp-image:latest cp ./dist_keycloak/keycloak-theme-for-kc-all-other-versions.jar /dist/keycloak-theme-for-kc-all-other-versions.jar
 
       - name: List files in dist_keycloak
         run: ls -l ./dist_keycloak
