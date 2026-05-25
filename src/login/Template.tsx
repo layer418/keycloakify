@@ -7,7 +7,6 @@ import { useSetClassName } from "keycloakify/tools/useSetClassName";
 import { useInitialize } from "keycloakify/login/Template.useInitialize";
 import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
-import DeckGLBackground from "./components/DeckGLBackground";
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
@@ -52,10 +51,18 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         return null;
     }
 
+    const realmLabel = (realm.displayName || realm.name || "layer418").toString().toLowerCase().replace(/\s+/g, "-");
+
     return (
-        <>
-            <DeckGLBackground />
-            <div className={kcClsx("kcLoginClass")}>
+        <div className={kcClsx("kcLoginClass")}>
+            <div className="l418-titlebar" aria-hidden="true">
+                <div className="lights">
+                    <span className="light r" />
+                    <span className="light y" />
+                    <span className="light g" />
+                </div>
+                <div className="title">guest@layer418 ~ — auth.sh — {realmLabel}</div>
+            </div>
             <div id="kc-header" className={kcClsx("kcHeaderClass")}>
                 <div id="kc-header-wrapper" className={kcClsx("kcHeaderWrapperClass")}>
                     {msg("loginTitleHtml", realm.displayNameHtml)}
@@ -184,6 +191,5 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                 </div>
             </div>
         </div>
-        </>
     );
 }

@@ -3,9 +3,11 @@ on:
     push:
         branches:
             - main
+            - 'theme/**'
     pull_request:
         branches:
             - main
+    workflow_dispatch:
 
 jobs:
     test:
@@ -15,6 +17,13 @@ jobs:
             - uses: actions/setup-node@v4
             - uses: bahmutov/npm-install@v1
             - run: npm run build-keycloak-theme
+            - name: Upload theme JAR
+              uses: actions/upload-artifact@v4
+              with:
+                  name: keycloak-theme-jar
+                  path: dist_keycloak/keycloak-theme-*.jar
+                  if-no-files-found: error
+                  retention-days: 30
 
     check_if_version_upgraded:
         name: Check if version upgrade
