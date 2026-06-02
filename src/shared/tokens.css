@@ -1,0 +1,39 @@
+/* Shared design tokens for the layer418-terminal themes (login + account).
+   Single source of truth for the palette + typeface so the two themes
+   can't drift. Imported by src/login/main.css and src/account/main.css. */
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/JetBrainsMono-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/JetBrainsMono-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --bg: #05080d;
+  --bg-2: #0a0f17;
+  --bg-3: #111823;
+  --line: #1a2433;
+  --line-2: #243246;
+  --fg: #f1f3f7;
+  --fg-dim: #a8aebd;
+  --fg-mute: #6b7488;
+  --green: #00ff9c;
+  --green-dim: #00b870;
+  --blue: #00a2ff;
+  --blue-dim: #0072b8;
+  --amber: #ffb454;
+  --red: #ff5f56;
+  --yellow: #ffbd2e;
+  --grn-dot: #27c93f;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
