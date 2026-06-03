@@ -102,9 +102,6 @@ body {
 }
 
 /* ---- Masthead -> terminal titlebar -------------------------------------- */
-/* Keep the masthead as a clean dark terminal bar with a green underline.
-   We deliberately do NOT inject faux traffic-lights / a prompt label here —
-   Keycloak owns this bar (logo + user menu) and overlays collide with it. */
 .pf-v5-c-masthead {
   background: linear-gradient(to bottom, #161e2b, #0e1520);
   border-bottom: 1px solid var(--green-dim);
@@ -113,6 +110,58 @@ body {
 .pf-v5-c-masthead__main,
 .pf-v5-c-masthead__content {
   color: var(--fg);
+}
+
+/* Replace Keycloak's logo with our terminal wordmark.
+   The brand sits at the masthead's left edge (after the nav toggle); we hide
+   the injected <img> and render our prompt in its place. */
+.pf-v5-c-masthead__brand img,
+.pf-v5-c-brand {
+  display: none !important;
+}
+.pf-v5-c-masthead__brand {
+  display: inline-flex !important;
+  align-items: center;
+  overflow: visible;
+  text-decoration: none;
+}
+.pf-v5-c-masthead__brand::after {
+  content: "guest@layer418:~$ account";
+  color: var(--green);
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 15px;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+/* ---- Jump-to-section rail (right side of scroll-form pages) ------------- */
+.pf-v5-c-jump-links__label {
+  color: var(--fg-mute);
+  font-family: var(--mono);
+  text-transform: lowercase;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+.pf-v5-c-jump-links__label::before {
+  content: "# ";
+  color: var(--green);
+}
+.pf-v5-c-jump-links__link {
+  color: var(--fg-dim);
+  font-family: var(--mono);
+  text-transform: lowercase;
+  font-size: 13px;
+}
+.pf-v5-c-jump-links__link:hover {
+  color: var(--green);
+}
+.pf-v5-c-jump-links__item.pf-m-current > .pf-v5-c-jump-links__link,
+.pf-v5-c-jump-links__link.pf-m-current {
+  color: var(--green);
+}
+.pf-v5-c-jump-links__list {
+  border-inline-start-color: var(--line-2);
 }
 
 /* ---- Sidebar / nav ------------------------------------------------------- */
