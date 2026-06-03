@@ -49,13 +49,17 @@
   --pf-v5-global--BorderColor--200: var(--line);
   --pf-v5-global--BorderColor--300: var(--line);
 
-  /* Primary / brand -> terminal green */
-  --pf-v5-global--primary-color--100: var(--green);
-  --pf-v5-global--primary-color--200: var(--green-dim);
-  --pf-v5-global--active-color--100: var(--green);
-  --pf-v5-global--active-color--200: var(--green-dim);
-  --pf-v5-global--active-color--300: var(--green-dim);
-  --pf-v5-global--active-color--400: var(--green-dim);
+  /* Primary / brand -> terminal green.
+     PatternFly's dark theme redefines these under .pf-v5-theme-dark, and the
+     primary BUTTON specifically reads --primary-color--dark-100. !important on
+     the custom-property declarations wins regardless of cascade order. */
+  --pf-v5-global--primary-color--100: var(--green) !important;
+  --pf-v5-global--primary-color--200: var(--green-dim) !important;
+  --pf-v5-global--primary-color--dark-100: var(--green) !important;
+  --pf-v5-global--active-color--100: var(--green) !important;
+  --pf-v5-global--active-color--200: var(--green-dim) !important;
+  --pf-v5-global--active-color--300: var(--green-dim) !important;
+  --pf-v5-global--active-color--400: var(--green-dim) !important;
 
   /* Links */
   --pf-v5-global--link--Color: var(--blue);
@@ -98,35 +102,13 @@ body {
 }
 
 /* ---- Masthead -> terminal titlebar -------------------------------------- */
+/* Keep the masthead as a clean dark terminal bar with a green underline.
+   We deliberately do NOT inject faux traffic-lights / a prompt label here —
+   Keycloak owns this bar (logo + user menu) and overlays collide with it. */
 .pf-v5-c-masthead {
   background: linear-gradient(to bottom, #161e2b, #0e1520);
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 1px 0 rgba(0, 255, 156, 0.08);
-  position: relative;
-}
-/* Traffic-light dots + a prompt label, pinned to the masthead's left edge */
-.pf-v5-c-masthead::before {
-  content: "guest@layer418 ~ — account.sh";
-  position: absolute;
-  left: 64px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--fg-mute);
-  font-size: 12px;
-  white-space: nowrap;
-  pointer-events: none;
-}
-.pf-v5-c-masthead::after {
-  content: "";
-  position: absolute;
-  left: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--red);
-  box-shadow: 18px 0 0 var(--yellow), 36px 0 0 var(--grn-dot);
+  border-bottom: 1px solid var(--green-dim);
+  box-shadow: 0 1px 0 rgba(0, 255, 156, 0.12);
 }
 .pf-v5-c-masthead__main,
 .pf-v5-c-masthead__content {
@@ -181,22 +163,47 @@ body {
 }
 
 /* ---- Form controls ------------------------------------------------------- */
+/* PatternFly's dark theme sets the form-control background via a component
+   custom property, so we override that property (scoped to the control) plus a
+   direct background-color fallback. */
 .pf-v5-c-form-control,
+.pf-v5-c-form-control input,
 .pf-v5-c-form-control > input,
-.pf-v5-c-form-control > select,
-.pf-v5-c-text-input-group__text-input {
-  background: #000;
-  color: var(--fg);
-  border: 1px solid var(--line-2);
+.pf-v5-c-form-control textarea,
+.pf-v5-c-form-control select,
+.pf-v5-c-text-input-group,
+.pf-v5-c-text-input-group__text-input,
+.pf-v5-c-text-input-group__text-input input {
+  --pf-v5-c-form-control--BackgroundColor: #000 !important;
+  --pf-v5-c-form-control--m-readonly--BackgroundColor: var(--bg-3) !important;
+  --pf-v5-c-form-control--m-disabled--BackgroundColor: var(--bg-3) !important;
+  --pf-v5-c-form-control--BorderTopColor: var(--line-2) !important;
+  --pf-v5-c-form-control--BorderRightColor: var(--line-2) !important;
+  --pf-v5-c-form-control--BorderLeftColor: var(--line-2) !important;
+  background-color: #000 !important;
+  color: var(--fg) !important;
+  font-family: var(--mono) !important;
   border-radius: 3px;
-  font-family: var(--mono);
 }
-.pf-v5-c-form-control:focus-within,
-.pf-v5-c-form-control:focus,
-.pf-v5-c-form-control > input:focus {
-  outline: none;
-  border-color: var(--green);
-  box-shadow: 0 0 0 1px var(--green), 0 0 16px -4px rgba(0, 255, 156, 0.35);
+/* readonly / disabled fields read as non-editable */
+.pf-v5-c-form-control.pf-m-readonly,
+.pf-v5-c-form-control[readonly],
+.pf-v5-c-form-control:disabled,
+.pf-v5-c-form-control input:disabled,
+.pf-v5-c-form-control input[readonly] {
+  background-color: var(--bg-3) !important;
+  color: var(--fg-mute) !important;
+}
+/* PF5 draws the focus underline with an ::after element */
+.pf-v5-c-form-control::after {
+  border-bottom-color: var(--line-2) !important;
+}
+.pf-v5-c-form-control:focus-within::after,
+.pf-v5-c-form-control:focus::after {
+  border-bottom-color: var(--green) !important;
+}
+.pf-v5-c-form-control:focus-within {
+  box-shadow: 0 0 16px -6px rgba(0, 255, 156, 0.4);
 }
 .pf-v5-c-form__label-text {
   color: var(--fg-dim);
@@ -215,19 +222,19 @@ body {
   transition: all 0.15s;
 }
 .pf-v5-c-button.pf-m-primary {
-  background: rgba(0, 255, 156, 0.06);
-  color: var(--green);
-  border: 1px solid var(--green);
+  background-color: var(--green) !important;
+  color: #000 !important;
+  border: 1px solid var(--green) !important;
   font-weight: 700;
   text-transform: lowercase;
 }
 .pf-v5-c-button.pf-m-primary::before {
   content: "$ ";
-  opacity: 0.7;
+  opacity: 0.6;
 }
 .pf-v5-c-button.pf-m-primary:hover {
-  background: var(--green);
-  color: #000;
+  background-color: var(--green-dim) !important;
+  color: #000 !important;
   box-shadow: 0 0 24px rgba(0, 255, 156, 0.35);
 }
 .pf-v5-c-button.pf-m-secondary,
